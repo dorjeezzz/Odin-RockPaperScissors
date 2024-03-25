@@ -12,7 +12,7 @@
         else return "Scissors";
     }
     function playRound(playerSelection, computerSelection){
-        console.log(`Player plays ${playerSelection}`);
+        console.log(`You play ${playerSelection}`);
         console.log(`Computer plays ${computerSelection}`);
         let temp = playerSelection.toLowerCase();
         // console.log(temp);
@@ -35,8 +35,10 @@
             else return `You lose! ${computerSelection} beats ${val}`;
         }
     }
-    const computerSelection=getComputerChoice();
-    let playerSelection=getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
+    for (let i = 0; i < 5; i++){
+        let res = getComputerChoice();
+        let ret = getComputerChoice();
+        let ans = playRound(res, ret);
+        console.log(ans);
+    }
 </script>
