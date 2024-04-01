@@ -15,30 +15,30 @@
         console.log(`You play ${playerSelection}`);
         console.log(`Computer plays ${computerSelection}`);
         let temp = playerSelection.toLowerCase();
-        // console.log(temp);
+        let val = temp.charAt(0).toUpperCase()+temp.slice(1);
         if (temp == "rock"){
-            let val = temp.charAt(0).toUpperCase()+temp.slice(1);
             if (computerSelection == "Rock") return "You tie! Rock vs Rock is a tie";
             else if (computerSelection == "Scissors") return `You win! ${val} beats ${computerSelection}`;
             else return `You lose! ${computerSelection} beats ${val}`;
         }
         else if (temp == "paper"){
-            let val = temp.charAt(0).toUpperCase()+temp.slice(1);
             if (computerSelection == "Paper") return "You tie! Paper vs Paper is a tie";
             else if (computerSelection == "Rock") return `You win! ${val} beats ${computerSelection}`;
             else return `You lose! ${computerSelection} beats ${val}`;
         }
         else {
-            let val = temp.charAt(0).toUpperCase()+temp.slice(1);
             if (computerSelection == "Scissors") return "You tie! Scissors vs Scissors is a tie";
             else if (computerSelection == "Paper") return `You win! ${val} beats ${computerSelection}`;
             else return `You lose! ${computerSelection} beats ${val}`;
         }
     }
-    for (let i = 0; i < 5; i++){
-        let res = getComputerChoice();
-        let ret = getComputerChoice();
-        let ans = playRound(res, ret);
-        console.log(ans);
+    function playGame(){
+        for (let i = 0; i < 5; i++){
+            let comp = getComputerChoice();
+            let player = prompt("What is your hand? (Please enter rock, paper, or scissors)");
+            let res = playRound(player, comp);
+            console.log(res);
+        }
     }
+    playGame();
 </script>
