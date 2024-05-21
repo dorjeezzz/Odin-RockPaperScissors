@@ -9,18 +9,23 @@
     </head>
     <body>
         <h1>Rock Paper Scissors Game</h1>
-        <button class="rock">Rock</button>
-        <button class="paper">Paper</button>
-        <button class="scissors">Scissors</button>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <div class="display">Display</div>
     </body>
 </html>
 
 <script>
     // console.log("hello world");
-    const b = document.querySelector("button");
-    b.addEventListener("click", (event)=>{
-        
-    })
+    const b = document.querySelectorAll("button");
+    b.forEach((button) => {
+        button.addEventListener("click", ()=>{
+            let curr = getComputerChoice();
+            let res = button.id;
+            playRound(res, curr);
+        });
+    });
     function random3(max){
         return Math.floor(Math.random()*max);
     }
@@ -95,5 +100,5 @@
         if (playr > compt) console.log("You win! You beat the computer");
         else console.log("Computer beat you! Better luck next time");
     }
-    playGame();
+    //playGame();
 </script>
