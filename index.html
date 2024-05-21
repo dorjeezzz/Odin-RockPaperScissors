@@ -4,16 +4,23 @@
         <meta charset = "UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src=""></script>
+        <script src="script.js" defer></script>
         <title>Rock Paper Scissors</title>
     </head>
     <body>
         <h1>Rock Paper Scissors Game</h1>
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
     </body>
 </html>
 
 <script>
     // console.log("hello world");
+    const b = document.querySelector("button");
+    b.addEventListener("click", (event)=>{
+        
+    })
     function random3(max){
         return Math.floor(Math.random()*max);
     }
@@ -75,18 +82,16 @@
     }
     function playGame(){
         let playr = 0, compt = 0;
-        for (let i = 0; i < 5; i++){
-            let comp = getComputerChoice();
-            let player = prompt("What is your hand? (Please enter rock, paper, or scissors)");
-            let res = playRound(player, comp);
-            if (res == 1) playr++;
-            else if (res == -1) compt++;
-            else{
-                playr++;
-                compt++;
-            }
-            console.log(playr);
+        let comp = getComputerChoice();
+        let player = prompt("What is your hand? (Please enter rock, paper, or scissors)");
+        let res = playRound(player, comp);
+        if (res == 1) playr++;
+        else if (res == -1) compt++;
+        else{
+            playr++;
+            compt++;
         }
+        console.log(playr);
         if (playr > compt) console.log("You win! You beat the computer");
         else console.log("Computer beat you! Better luck next time");
     }
