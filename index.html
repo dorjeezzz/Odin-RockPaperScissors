@@ -8,24 +8,25 @@
         <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <h1>Rock Paper Scissors Game</h1>
+        <h1>Rock Paper Scissors Game (First to 5)</h1>
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
-        <div class="display">Display</div>
+        <div id="display">
+            <p id="pscore"></p>
+            <p id="bscore"></p>
+        </div>
+
     </body>
 </html>
 
 <script>
     // console.log("hello world");
+    const players = document.querySelector("#pscore");
+    const bots = document.querySelector("#bscore");
     const b = document.querySelectorAll("button");
-    b.forEach((button) => {
-        button.addEventListener("click", ()=>{
-            let curr = getComputerChoice();
-            let res = button.id;
-            playRound(res, curr);
-        });
-    });
+    let yourscore = 0;
+    let botscore = 0;
     function random3(max){
         return Math.floor(Math.random()*max);
     }
@@ -100,5 +101,17 @@
         if (playr > compt) console.log("You win! You beat the computer");
         else console.log("Computer beat you! Better luck next time");
     }
-    //playGame();
+    b.forEach((button) => {
+        button.addEventListener("click", ()=>{
+            let curr = getComputerChoice();
+            let move = button.id;
+            let res = playRound(move, curr);
+            if (res == 1) yourscore += 1;
+            if (res == -1) botscore += 1;
+            players.textContent = `Your score is: ${yourscore}`;
+            bots.textContent = `Opponent score is: ${botscore}`;
+        });
+    });
+    // players.textContent = `Your score is: ${yourscore}`;
+    // bots.textContent = `Opponent score is: ${botscore}`;
 </script>
